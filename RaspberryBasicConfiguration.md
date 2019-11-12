@@ -137,3 +137,5 @@ echo "Finished"
 - Adicione a linha a seguir no final do arquivo autostart:
 
 ```@bash /home/pi/logon.sh```
+
+# Só usar agora, boa sorte
