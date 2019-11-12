@@ -3,7 +3,7 @@
 ## Sistema Raspbian
 
 ### 1: Instalação do Raspbian
-- Para realizar a instalação do raspbian é necessário acessar o site https://www.raspberrypi.org/downloads/ e realizar o download da ISO, conecte o Cartão MicroSD na máquina, realize a formatação com o **SD Formatter** e a instalação da ISO com o **Win32 Disk Imager**.
+- Para realizar a instalação do raspbian é necessário acessar o site https://www.raspberrypi.org/downloads/ e realizar o download da ISO, conecte o Cartão MicroSD na máquina, realize a formatação com o **[SD Formatter](https://www.sdcard.org/downloads/formatter/)** e a instalação da ISO com o **[Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/)**.
 
 ### 2: Configurar acesso SSH
 - Clique no menu iniciar do Raspbian, vá em **Preferences** e em **Raspberry Pi Configuration**;
