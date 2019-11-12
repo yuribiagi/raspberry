@@ -5,7 +5,7 @@
 ### 1: Instalação do Raspbian
 - Para realizar a instalação do raspbian é necessário acessar o site https://www.raspberrypi.org/downloads/ e realizar o download da ISO, conecte o Cartão MicroSD na máquina, realize a formatação com o **SD Formatter** e a instalação da ISO com o **Win32 Disk Imager**.
 
-### 2: Configurar 
+### 2: Configurar acesso SSH
 - Clique no menu iniciar do Raspbian, vá em **Preferences** e em **Raspberry Pi Configuration**;
 - Em **Raspberry Pi Configuration**, selecione a aba **Interfaces**;
 - Em **SSH**, selecione **enable** (utilizado para acesso ao sistema via SSH);
@@ -13,7 +13,33 @@
 - Na aba **Localisation**, podem ser configuradas as opções de localização, Timezone e linguagem de teclado;
 - Para que todas estas configurações tenham efeito você deve reiniciar o sistema.
 
-### 3: Configuração de IP Estático
+### 3: Configurar acesso VNC
+- Rodar comandos abaixo:
+
+```
+sudo apt update
+sudo apt install realvnc-vnc-server realvnc-vnc-viewer
+```
+
+- Ativar o VNC:
+
+```
+sudo raspi-config
+```
+
+Navegue até a **Opções de interface** e habilite o **VNC para Sim**.
+
+- Definindo senha:
+
+```
+nano /root/.vnc/config.d/vncserver-x11
+```
+
+Substitua **Authentication=SystemAuth** para **Authentication=VncAuth** e salve o arquivo.
+
+- No terminal execute ```sudo vncpasswd -service``` vai ser solicitado a senha, defina e reinicie o servidor VNC.
+
+### 4: Configuração de IP Estático
 - Normalmente o raspbian vem com o DHCP ligado, se na sua rede os dispositivos ficam na configuração estática, é necessário mudar as configurações em **/etc/dhcpcd.conf**, alterar para configurações de exemplo abaixo.
 
 ```
@@ -23,7 +49,7 @@ static routers=192.168.1.1
 static domain_name_servers=8.8.8.8
 ```
 
-### 4: Atualização de SO
+### 5: Atualização de SO
 - Rodar comandos abaixo:
 
 ```
@@ -33,14 +59,14 @@ sudo apt-get dist-update -y
 sudo apt-get autoremove -y
 ```
 
-### 5: Instalando requisitos do modo quiosque
+### 6: Instalando requisitos do modo quiosque
 - Rodar o comando abaixo:
 
 ```
 sudo apt–get install –y chromium–browser ttf–mscorefonts–installer unclutter x11–xserver–utils
 ```
 
-### 6: Configurar inicialização do SO
+### 7: Configurar inicialização do SO
 - Edite o arquivo autostart:
 
 ```
@@ -63,13 +89,13 @@ lxpanel --profile LXDE-pi
 
 *o arquivo autostart pode estar em lugar diferente, na dúvida, rode o comando ```find . -name "autostart"``` acesse os arquivos via nano e veja qual apresenta o mesmo começo do código acima.*
 
-### 7: Configuração para inserção automática de Login
--
-
-### 8:
--
+### 8: Configuração para inserção automática de Login
+- O xdotool é uma ferramenta de instruções que permite aos programadores emularem o pressionamento de teclas do teclado e do mouse, além de manipular janelas.
 
 ### 9:
+-
+
+### 10:
 -
 
 ### 10:
