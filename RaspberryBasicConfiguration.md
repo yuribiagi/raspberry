@@ -138,4 +138,4 @@ echo "Finished"
 
 ```@bash /home/pi/logon.sh```
 
-# Só usar agora, boa sorte
+# Só usar agora, boa sorte.
