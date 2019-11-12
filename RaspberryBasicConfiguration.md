@@ -61,9 +61,9 @@ lxpanel --profile LXDE-pi
 @xset -dpms
 ```
 
-*o arquivo autostart pode estar em lugar diferente, na dúvida, rode o comando ```find . -name "autostart"``` acesse os arquivos via nano e veja qual apresenta o mesmo começo do código acima*
+*o arquivo autostart pode estar em lugar diferente, na dúvida, rode o comando ```find . -name "autostart"``` acesse os arquivos via nano e veja qual apresenta o mesmo começo do código acima.*
 
-### 7:
+### 7: Configuração para inserção automática de Login
 -
 
 ### 8:
