@@ -92,20 +92,48 @@ lxpanel --profile LXDE-pi
 ### 8: Configuração para inserção automática de Login
 - O xdotool é uma ferramenta de instruções que permite aos programadores emularem o pressionamento de teclas do teclado e do mouse, além de manipular janelas.
 
-### 9:
--
+- Para instalar, acesse o terminal e digite o seguinte comando:
 
-### 10:
--
+```sudo apt-get install xdotool```
 
-### 10:
--
+- Crie um arquivo chamado logon.sh, através do seguinte comando no terminal:
 
-### 11:
--
+```sudo nano /home/pi/logon.sh```
 
-### 12:
--
+- No novo arquivo criado, digite as seguintes informações:
 
-### 13:
--
+```
+#!/usr/bash
+sleep 60
+username="usuario"
+password="senha"
+echo "Setting Display"
+export DISPLAY=:0
+echo "Sending Username"
+for char in $(sed -E s/'(.)'/'\1 '/g <<<"$username"); do
+ xdotool type --window chromium $char
+done
+ xdotool key --window chromium Tab
+sudo echo "Sending Password"
+for char in $(sed -E s/'(.)'/'\1 '/g <<<"$password"); do
+ xdotool type --window chromium $char
+done
+ xdotool key --window chromium Return
+echo "Waiting 5 Seconds"
+sleep 5
+echo "Setting Remember Password"
+xdotool key --window chromium Tab
+xdotool key --window chromium Tab
+xdotool key --window chromium Return
+echo "Finished"
+```
+
+- Altere os campos username e password para o usuário e senha de sua escolha.
+- A linha sleep 60 é para que o raspberry consiga abrir o navegador por completo antes do xdotool começar a digitar o usuário e senha, este tempo pode ser aumentado. O valor 60 se refere ao número de segundos em que o script ficará aguardando até que sejam executados os outros comandos.
+- Edite o arquivo de inicialização através do comando no terminal:
+
+```sudo nano .config/lxsession/LXDE–pi/autostart```
+
+- Adicione a linha a seguir no final do arquivo autostart:
+
+```@bash /home/pi/logon.sh```
