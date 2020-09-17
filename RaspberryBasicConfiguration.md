@@ -138,4 +138,26 @@ echo "Finished"
 
 ```@bash /home/pi/logon.sh```
 
+### 9: Desativação de Wi-Fi onboard e Bluetooth
+- Para desativar completamente o WiFi e Bluetooth integrado do firmware no Pi3 / Pi4, adicione em ```"/boot/config.txt"```:
+
+```
+dtoverlay=disable-wifi
+dtoverlay=disable-bt
+```
+
+### 10: Instalação de NTP
+- Para baixar o ntp execute:
+
+```apt-get install ntp```
+
+- Edite a configuração do ntp em ```"/etc/ntp.conf"``` para adicionar os servidores da nic nacionais com o horário local:
+
+```
+pool a.st1.ntp.br iburst
+pool b.st1.ntp.br iburst
+pool c.st1.ntp.br iburst
+pool d.st1.ntp.br iburst
+```
+
 # Só usar agora, boa sorte.
