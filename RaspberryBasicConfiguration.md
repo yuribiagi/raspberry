@@ -5,7 +5,40 @@
 ### 1: Instalação do Raspbian
 - Para realizar a instalação do raspbian é necessário acessar o site https://www.raspberrypi.org/downloads/ e realizar o download da ISO, conecte o Cartão MicroSD na máquina, realize a formatação com o **[SD Formatter](https://www.sdcard.org/downloads/formatter/)** e a instalação da ISO com o **[Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/)**.
 
-### 2: Configurar acesso SSH
+### 2: Configuração Inicial
+- Após a inicialização do raspberry, aparecerá a tela de configuração "Welcome to Raspberry Pi", são configurações simples e não existe a necessidade de conectar a um wifi e realizar a atualização neste momento, faremos logo em seguida.
+
+### 3: Configuração de Endereço IP Estático
+- Normalmente o raspbian vem com o DHCP ligado, se na sua rede os dispositivos ficam na configuração estática, é necessário mudar as configurações em **/etc/dhcpcd.conf**, alterar para configurações de exemplo abaixo.
+
+Subir para privelégios root:
+```
+sudo su
+```
+
+Editar arquivo dhcpcd.conf:
+```
+nano /etc/dhcpcd.conf
+```
+
+No arquivo escreva/cole o texto abaixo alterando para as configurações de seu ambiente ethernet:
+```
+# Configuração de rede interface eth0
+interface eth0
+static ip_address=102.168.1.12/24
+static routers=192.168.1.1
+static domain_name_servers=8.8.8.8
+
+# Configuração de rede interface wlan0
+interface wlan0
+static ip_address=102.168.1.12/24
+static routers=192.168.1.1
+static domain_name_servers=8.8.8.8
+```
+
+### 4:
+
+### 3: Configurar acesso SSH
 - Clique no menu iniciar do Raspbian, vá em **Preferences** e em **Raspberry Pi Configuration**;
 - Em **Raspberry Pi Configuration**, selecione a aba **Interfaces**;
 - Em **SSH**, selecione **enable** (utilizado para acesso ao sistema via SSH);
@@ -13,7 +46,7 @@
 - Na aba **Localisation**, podem ser configuradas as opções de localização, Timezone e linguagem de teclado;
 - Para que todas estas configurações tenham efeito você deve reiniciar o sistema.
 
-### 3: Configurar acesso VNC
+### 4: Configurar acesso VNC
 - Rodar comandos abaixo:
 
 ```
@@ -39,15 +72,6 @@ Substitua **Authentication=SystemAuth** para **Authentication=VncAuth** e salve 
 
 - No terminal execute ```sudo vncpasswd -service``` vai ser solicitado a senha, defina e reinicie o servidor VNC.
 
-### 4: Configuração de IP Estático
-- Normalmente o raspbian vem com o DHCP ligado, se na sua rede os dispositivos ficam na configuração estática, é necessário mudar as configurações em **/etc/dhcpcd.conf**, alterar para configurações de exemplo abaixo.
-
-```
-interface eth0
-static ip_address=102.168.1.12/24
-static routers=192.168.1.1
-static domain_name_servers=8.8.8.8
-```
 
 ### 5: Atualização de SO
 - Rodar comandos abaixo:
