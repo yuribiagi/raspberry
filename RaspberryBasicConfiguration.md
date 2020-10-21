@@ -21,24 +21,16 @@ Editar arquivo dhcpcd.conf:
 nano /etc/dhcpcd.conf
 ```
 
-No arquivo escreva/cole o texto abaixo alterando para as configurações de seu ambiente ethernet:
+No arquivo escreva/cole o texto abaixo alterando para as configurações de seu ambiente:
 ```
 # Configuração de rede interface eth0
 interface eth0
 static ip_address=102.168.1.12/24
 static routers=192.168.1.1
 static domain_name_servers=8.8.8.8
-
-# Configuração de rede interface wlan0
-interface wlan0
-static ip_address=102.168.1.12/24
-static routers=192.168.1.1
-static domain_name_servers=8.8.8.8
 ```
 
-### 4:
-
-### 3: Configurar acesso SSH
+### 4: Configurar acesso SSH
 - Clique no menu iniciar do Raspbian, vá em **Preferences** e em **Raspberry Pi Configuration**;
 - Em **Raspberry Pi Configuration**, selecione a aba **Interfaces**;
 - Em **SSH**, selecione **enable** (utilizado para acesso ao sistema via SSH);
@@ -46,7 +38,7 @@ static domain_name_servers=8.8.8.8
 - Na aba **Localisation**, podem ser configuradas as opções de localização, Timezone e linguagem de teclado;
 - Para que todas estas configurações tenham efeito você deve reiniciar o sistema.
 
-### 4: Configurar acesso VNC
+### 5: Configurar acesso VNC
 - Rodar comandos abaixo:
 
 ```
@@ -73,28 +65,28 @@ Substitua **Authentication=SystemAuth** para **Authentication=VncAuth** e salve 
 - No terminal execute ```sudo vncpasswd -service``` vai ser solicitado a senha, defina e reinicie o servidor VNC.
 
 
-### 5: Atualização de SO
+### 6: Atualização de SO
 - Rodar comandos abaixo:
 
 ```
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get dist-update -y
+sudo apt-get dist-upgrade -y
 sudo apt-get autoremove -y
 ```
 
-### 6: Instalando requisitos do modo quiosque
+### 7: Instalando requisitos do modo quiosque
 - Rodar o comando abaixo:
 
 ```
-sudo apt–get install –y chromium–browser ttf–mscorefonts–installer unclutter x11–xserver–utils
+sudo apt-get install chromium-browser ttf-mscorefonts-installer unclutter x11-xserver-utils -y
 ```
 
-### 7: Configurar inicialização do SO
+### 8: Configurar inicialização do SO
 - Edite o arquivo autostart:
 
 ```
-sudo nano .config/lxsession/LXDE–pi/autostart
+sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
 ```
 
 - Preencha da seguinte maneira:
@@ -113,7 +105,7 @@ lxpanel --profile LXDE-pi
 
 *o arquivo autostart pode estar em lugar diferente, na dúvida, rode o comando ```find . -name "autostart"``` acesse os arquivos via nano e veja qual apresenta o mesmo começo do código acima.*
 
-### 8: Configuração para inserção automática de Login
+### 9: Configuração para inserção automática de Login
 - O xdotool é uma ferramenta de instruções que permite aos programadores emularem o pressionamento de teclas do teclado e do mouse, além de manipular janelas.
 
 - Para instalar, acesse o terminal e digite o seguinte comando:
@@ -162,7 +154,7 @@ echo "Finished"
 
 ```@bash /home/pi/logon.sh```
 
-### 9: Desativação de Wi-Fi onboard e Bluetooth
+### 10: Desativação de Wi-Fi onboard e Bluetooth
 - Para desativar completamente o WiFi e Bluetooth integrado do firmware no Pi3 / Pi4, adicione em ```"/boot/config.txt"```:
 
 ```
@@ -170,7 +162,7 @@ dtoverlay=disable-wifi
 dtoverlay=disable-bt
 ```
 
-### 10: Instalação de NTP
+### 11: Instalação de NTP
 - Para baixar o ntp execute:
 
 ```apt-get install ntp```
