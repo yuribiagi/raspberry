@@ -54,13 +54,21 @@ sudo raspi-config
 
 Navegue até a **Opções de interface** e habilite o **VNC para Sim**.
 
-- Definindo senha:
+- Definindo senha e outros parametros no NVC:
 
 ```
 nano /root/.vnc/config.d/vncserver-x11
 ```
 
 Substitua **Authentication=SystemAuth** para **Authentication=VncAuth** e salve o arquivo.
+
+- Você também pode opcionalmente adicionar ao final do arquivo as seguintes linhas, para não avisar o usuário que há alguém conectado, para desabilitar o icone e também tirar o tempo de timeout:
+
+```
+ConnNotifyTimeout=0
+DisableTrayIcon=1
+IdleTimeout=0
+```
 
 - No terminal execute ```sudo vncpasswd -service``` vai ser solicitado a senha, defina e reinicie o servidor VNC.
 
