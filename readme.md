@@ -92,15 +92,15 @@ sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
 - Preencha da seguinte maneira:
 
 ```
-lxpanel --profile LXDE-pi
+@lxpanel --profile LXDE-pi
 @pcmanfm --desktop --profile LXDE-pi
 @xscreensaver -no-splash
 @point-rpi
-@/usr/bin/chromium-browser --incognito --start-maximized --kiosk https://google.com.br/
 @unclutter
 @xset s off
 @xset s noblank
 @xset -dpms
+@/usr/bin/chromium-browser --incognito --disable-gpu --start-maximized --kiosk https://google.com.br/
 ```
 
 *o arquivo autostart pode estar em lugar diferente, na dúvida, rode o comando ```find . -name "autostart"``` acesse os arquivos via nano e veja qual apresenta o mesmo começo do código acima.*
