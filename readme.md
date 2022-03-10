@@ -43,7 +43,7 @@ static domain_name_servers=8.8.8.8
 
 ```
 sudo apt update
-sudo apt install realvnc-vnc-server realvnc-vnc-viewer
+sudo apt install realvnc-vnc-server
 ```
 
 - Ativar o VNC:
