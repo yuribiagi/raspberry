@@ -181,7 +181,7 @@ dtoverlay=disable-bt
 
 ```apt-get install ntp```
 
-- Edite a configuração do ntp em ```"/etc/ntp.conf"``` para adicionar os servidores da nic nacionais com o horário local:
+- Edite a configuração do ntp em ```"nano /etc/ntp.conf"``` para adicionar os servidores da nic nacionais com o horário local:
 
 ```
 pool a.st1.ntp.br iburst
