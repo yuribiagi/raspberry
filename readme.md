@@ -25,8 +25,14 @@ No arquivo escreva/cole o texto abaixo alterando para as configurações de seu 
 ```
 # Configuração de rede interface eth0
 interface eth0
-static ip_address=102.168.1.12/24
+static ip_address=192.168.1.12/24
 static routers=192.168.1.1
+static domain_name_servers=8.8.8.8
+
+# Configuração de rede interface wlan0
+interface eth0
+static ip_address=192.168.10.12/24
+static routers=192.168.10.1
 static domain_name_servers=8.8.8.8
 ```
 
